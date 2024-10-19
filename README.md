@@ -32,7 +32,7 @@ To run this project, you'll need to have the following installed:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/langchain-summarization-app.git
+   git clone https://github.com/IMRANDIL/Youtube_video_website_content_summarisation.git
    ```
 
 2. **Create and activate a virtual environment**:
