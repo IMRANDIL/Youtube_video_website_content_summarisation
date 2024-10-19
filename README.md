@@ -4,6 +4,9 @@
 
 This Streamlit app leverages the power of **LangChain** and **Groq API** to summarize text content from YouTube videos or websites. It generates concise summaries based on the provided URL, creating a structured and easy-to-read summary with key points.
 
+
+![Screenshot 2024-10-19 065341](https://github.com/user-attachments/assets/0004042b-870e-430a-98b1-0e4af76d2851)
+
 ## Features
 - Summarize content from YouTube videos and websites.
 - Outputs a 300-word summary with a well-structured title and numbered key points.
