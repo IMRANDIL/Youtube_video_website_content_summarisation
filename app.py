@@ -6,6 +6,11 @@ from langchain.chains.summarize import load_summarize_chain
 
 from langchain_community.document_loaders import YoutubeLoader, UnstructuredURLLoader
 
+
+
+
+
+
 ## streamlit app now
 
 st.set_page_config(page_title="LangChain: Summarize Text From YT or Websites", page_icon="🐦")
@@ -18,7 +23,8 @@ st.subheader("Summarize URL")
 
 with st.sidebar:
     groq_api_key = st.text_input("Groq API Key", value="", type="password")
-    
+    ## llm 
+    llm = ChatGroq(api_key=groq_api_key, model="Gemma-7b-It", streaming=True)
 url = st.text_input("URL", label_visibility="collapsed")
 
 if st.button("Summarize the Content from YT or Website"):
@@ -28,4 +34,19 @@ if st.button("Summarize the Content from YT or Website"):
         st.error("Please provide the information")
     elif not validators.url(url):
         st.error("Please enter the valid url, It can be a YT video url or website url")
-
+        
+    else:
+        try:
+            with st.spinner("waiting..."):
+                ## loading the website data (url data)
+                if "youtube.com" in url:
+                    loader = YoutubeLoader.from_youtube_url(url, add_video_info=True)
+                    
+                    
+                else:
+                    loader = UnstructuredURLLoader(urls=[url], ssl_verify=False, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"})
+                data = loader.load()
+                
+            
+        except Exception as e:
+            
